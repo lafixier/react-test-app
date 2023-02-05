@@ -1,20 +1,34 @@
 import logo from "./logo.svg";
 import "./App.css";
 
+function Logo() {
+  return <img src={logo} className="App-logo" alt="logo" />;
+}
+
+function Text(props) {
+  return <p>{props.text}</p>;
+}
+
+function Link(props) {
+  return (
+    <a
+      className="App-link"
+      href={props.href}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {props.text}
+    </a>
+  );
+}
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>超高速回転するReact君</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Logo />
+        <Text text="Edit src/App.js and save to reload." />
+        <Link href="https://reactjs.org" text="Learn React" />
       </header>
     </div>
   );
