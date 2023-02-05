@@ -1,35 +1,62 @@
-import logo from "./logo.svg";
 import "./App.css";
 
-function Logo() {
-  return <img src={logo} className="App-logo" alt="logo" />;
-}
 
-function Text(props) {
-  return <p>{props.text}</p>;
-}
-
-function Link(props) {
+function Icon(props){
   return (
-    <a
-      className="App-link"
-      href={props.href}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {props.text}
-    </a>
+    <img className="icon" src={props.src} alt="icon"/>
+  )
+}
+
+function Name(props){
+  return (
+    <strong>{props.name}</strong>
+  )
+}
+
+function Id(props){
+  return (
+    <span>@{props.id}</span>
+  )
+}
+
+function User(props){
+  return (
+    <div>
+      <Icon src={props.user.iconUrl} />
+      <Name name={props.user.name} />
+      <Id id={props.user.id} />
+    </div>
+  )
+}
+
+function Note(props) {
+  return (
+    <div>
+      <header>
+        <User user={props.author} />
+      </header>
+      <main>
+        <p>{props.body}</p>
+      </main>
+      <footer>
+      </footer>
+    </div>
   );
 }
 
 function App() {
+  const author = {
+    name: "古手",
+    id: "lafixier",
+    iconUrl: "https://github.com/lafixier.png"
+  }
+  const content = "React完全に理解した"
   return (
     <div className="App">
-      <header className="App-header">
-        <Logo />
-        <Text text="Edit src/App.js and save to reload." />
-        <Link href="https://reactjs.org" text="Learn React" />
-      </header>
+      <Note
+        author={author}
+        content={content}
+      />
     </div>
   );
 }
